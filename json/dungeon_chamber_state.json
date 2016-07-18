@@ -1,0 +1,34 @@
+{
+	"states": [{
+		"lair": [
+		{
+			"state": "Rubble, ceiling partially collapsed",
+			"id": 1
+		},		
+		{
+			"state": "Holes, floor partially collapsed",
+			"id": 2
+		},		
+		{
+			"state": "Ashes, contents mostly burned",
+			"id": 3
+		},			
+		{
+			"state": "Used as a campsite",
+			"id": 4
+		},
+		{
+			"state": "Furniture wrecked but stil l present",
+			"id": 5
+		},
+		{
+			"state": "Stripped bare",
+			"id": 6
+		},
+		{
+			"state": "Pristine and in original state",
+			"id": 6
+		}
+	]
+}]
+}

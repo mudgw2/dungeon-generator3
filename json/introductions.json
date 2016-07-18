@@ -1,0 +1,10 @@
+{
+	"introductions": [{
+			"intro": "While traveling in the wilderness, the characters fall into a sinkhole that opens beneath their feet, dropping them into the adventure location."
+		}, {
+			"intro": "While traveling in the wilderness, the characters notice the entrance to the adventure location."
+		}, {
+			"intro": "While traveling on a road, the characters are attacked by monsters that flee into the nearby adventure location."
+		}
+	]
+}

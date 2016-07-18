@@ -1,0 +1,30 @@
+{
+	"purpose": [{
+		"lair": [
+		{
+			"purpose": "Antechamber or waiting room for spectators",
+			"id": 1
+		},		
+		{
+			"purpose": "Guardroom fortified against intruders",
+			"id": 2
+		},		
+		{
+			"purpose": "Vault for holding important treasures, accessible only by locked or secret door (75 percent chance of being trapped)",
+			"id": 3
+		},			
+		{
+			"purpose": "Room containing a puzzle that must be solved to bypass a trap or monster",
+			"id": 4
+		},
+		{
+			"purpose": "Trap designed to kill or capture creatures",
+			"id": 5
+		},
+		{
+			"purpose": "Kennel for pets or guard beasts",
+			"id": 6
+		}
+	]
+}]
+}

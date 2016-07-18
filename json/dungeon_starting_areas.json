@@ -1,0 +1,112 @@
+{
+	"starting_areas": [
+		{
+			"desc": "Square, 20 x 20ft.; passage on each wall",
+			"width": 20,
+			"length": 20,
+			"height": 10,
+			"shape": "square",
+			"passages" : "N,S,E,W",
+			"doors": "",
+			"tile":"starting_area_001.png",
+			"id": 1
+		}, {
+			"desc": "Square, 20 x 20ft.; door on two walls, passage in third wall",
+			"width": 20,
+			"length": 20,
+			"height": 10,
+			"shape": "square",
+			"passages" : "E",
+			"doors": "S,W",
+			"tile":"starting_area_002.png",
+			"id": 2
+		}, {
+			"desc": "Square, 40 x 40 ft.; doors on three walls",
+			"width": 40,
+			"length": 40,
+			"height": 10,
+			"shape": "square",
+			"passages" : "S",
+			"doors" : "N,E,W",
+			"tile":"starting_area_003.png",
+			"id": 3
+		},
+		{
+			"desc": "Rectangle, 80 x 20ft., with row of pillars down the middle; two passages leading from each long wall, doors on each short wall",
+			"width": 80,
+			"length": 20,
+			"height": 10,
+			"shape": "rectangle",
+			"passages" : "W,E",
+			"doors" : "N,S",
+			"tile":"starting_area_004.png",
+			"id": 4
+		},
+		{
+			"desc": "Rectangle, 20 x 40ft.; passage on each wall",
+			"width": 20,
+			"length": 40,
+			"height": 10,
+			"shape": "rectangle",
+			"passages" : "N,S,E,W",
+			"doors" : "",
+			"tile":"starting_area_005.png",
+			"id": 5
+		},
+		{
+			"desc": "Circle, 40ft. diameter; one passage at each cardinal direction",
+			"width": 40,
+			"length": 40,
+			"height": 10,
+			"shape": "circle",
+			"passages" : "N,S,E,W",
+			"doors" : "",
+			"tile":"starting_area_006.png",
+			"id": 6
+		},
+		{
+			"desc": "Circle, 40ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)",
+			"width": 40,
+			"length": 40,
+			"height": 10,
+			"shape": "circle",
+			"passages" : "N,S,E,W",
+			"doors" : "",
+			"tile":"starting_area_007.png",
+			"id": 7
+		},
+		{
+			"desc": "Square, 20 x 20ft.; door on two walls , passage on third wall, secret door on fourth wall",
+			"width": 20,
+			"length": 20,
+			"height": 10,
+			"shape": "square",
+			"passages" : "E",
+			"doors" : "W",
+			"tile":"starting_area_008.png",
+			"id": 8
+		},
+		{
+			"desc": "Passage, 10 ft. wide; T intersection",
+			"width": 10,
+			"length": 20,
+			"height": 10,
+			"shape": "rectangle",
+			"passages" : "E,W",
+			"doors" : "",
+			"tile":"starting_area_009.png",
+			"id": 9
+		},
+		{
+			"desc": "Passage, 10ft. wide; four-way intersection",
+			"width": 10,
+			"length": 20,
+			"height": 10,
+			"shape": "rectangle",
+			"passages" : "N,S,E,W",
+			"doors" : "",
+			"tile":"starting_area_010.png",
+			"id": 10
+		}
+	]
+}

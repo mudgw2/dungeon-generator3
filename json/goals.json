@@ -1,0 +1,124 @@
+{
+    "goals": [{
+		"dungeon": [
+			{
+			"goal": "Stop the dungeon's monstrous inhabitants from raiding the surface world.",
+			"id": 1
+			},
+			{
+			"goal": "Foil a villain's evil scheme.",
+			"id": 2
+			},
+			{
+			"goal": "Destroy a magical threat inside the dungeon.",
+			"id": 3
+			},
+			{
+			"goal": "Acquire treasure.",
+			"id": 4
+			},
+			{
+			"goal": "Find a particular item for a specific purpose.",
+			"id": 5
+			},
+			{
+			"goal": "Retrieve a stolen item hidden in the dungeon.",
+			"id": 6
+			},
+			{
+			"goal": "Find information needed for a special purpose.",
+			"id": 7
+			},
+			{
+			"goal": "Rescue a captive.",
+			"id": 8
+			},
+			{
+			"goal": "Discover the fate of a previous adventuring party.",
+			"id": 9
+			},
+			{
+			"goal": "Find an NPC who disappeared in the area.",
+			"id": 10
+			},
+			{
+			"goal": "Slay a dragon or some other challenging monster.",
+			"id": 11
+			},
+			{
+			"goal": "Discover the nature and origin of a strange location or phenomenon.",
+			"id": 12
+			},
+			{
+			"goal": "Pursue fleeing foes taking refuge in the dungeon.",
+			"id": 13
+			},
+			{
+			"goal": "Escape from captivity in the dungeon.",
+			"id": 14
+			},
+			{
+			"goal": "Clear a ruin so it can be rebuilt and reoccupied.",
+			"id": 15
+			},
+			{
+			"goal": "Discover why a villain is interested in the dungeon.",
+			"id": 16
+			}
+		],
+		"wilderness": [
+			{
+			"goal": "Locate a dungeon or other site of interest (roll on the Dungeon Goals table to find out why).",
+			"id": 1
+			},
+			{
+			"goal": "Assess the scope of a natural or unnatural disaster.",
+			"id": 2
+			},
+			{
+			"goal": "Escort an NPC to a destination.",
+			"id": 3
+			},
+			{
+			"goal": "Arrive at a destination without being seen by the villain's forces.",
+			"id": 4
+			},
+			{
+			"goal": "Stop monsters from raiding caravans and farms.",
+			"id": 5
+			},
+			{
+			"goal": "Establish trade with a distant town.",
+			"id": 6
+			},
+			{
+			"goal": "Protect a caravan traveling to a distant town.",
+			"id": 7
+			},
+			{
+			"goal": "Map a new land.",
+			"id": 8
+			},
+			{
+			"goal": "Find a place to establish a colony.",
+			"id": 9
+			},
+			{
+			"goal": "Find a natural resource.",
+			"id": 10
+			},
+			{
+			"goal": "Hunt a specific monster.",
+			"id": 11
+			},
+			{
+			"goal": "Obtain information from a reclusive hermit.",
+			"id": 12
+			},
+			{
+			"goal": "Find an object that was lost in the wilds.",
+			"id": 13
+			}
+		]}
+	]
+}

@@ -1,0 +1,122 @@
+{
+	"passage": [
+		{
+			"desc": "Continue straight 30ft., no doors or side passages",
+			"width": 10,
+			"length": 30,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":0,
+			"doors": "",
+			"tile":"passage_001.png",
+			"id": 1
+		},
+		{
+			"desc": "Continue straight 20ft., door to the right, then an additional 10 ft. ahead",
+			"width": 10,
+			"length": 35,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":0,
+			"doors": "R",
+			"tile":"passage_002.png",
+			"id": 2
+		},
+		{
+			"desc": "Continue straight 20ft., door to the left, then an additional 10 ft. ahead",
+			"width": 10,
+			"length": 35,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":0,
+			"doors": "L",
+			"tile":"passage_003.png",
+			"id": 3
+		},
+		{
+			"desc": "Continue straight 20ft., side passage to the right. then an additional 10ft. ahead",
+			"width": 10,
+			"length": 40,
+			"height": 10,
+			"shape": "",
+			"passages" : "R",
+			"secret_chance":0,
+			"doors": "",
+			"tile":"passage_004.png",
+			"id": 4
+		},
+		{
+			"desc": "Continue straight 20ft., side passage to the left, then an additional 10ft. ahead",
+			"width": 10,
+			"length": 40,
+			"height": 10,
+			"shape": "",
+			"passages" : "L",
+			"secret_chance":0,
+			"doors": "",
+			"tile":"passage_005.png",
+			"id": 5
+		},
+		{
+			"desc": "Continue straight 20ft., comes to a dead end.",
+			"width": 10,
+			"length": 20,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":10,
+			"doors": "S",
+			"tile":"passage_006.png",
+			"id": 6
+		},
+		{
+			"desc": "Continue straight 20ft., then the passage turns left and continues 10 ft.",
+			"width": 10,
+			"length": 20,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":0,
+			"doors": "",
+			"tile":"passage_007.png",
+			"id": 7
+		},
+		{
+			"desc": "Continue straight 20ft., then the passage turns right and continues 10ft.",
+			"width": 10,
+			"length": 20,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":0,
+			"doors": "",
+			"tile":"passage_008.png",
+			"id": 8
+		},{
+			"desc": "Chamber",
+			"width": 10,
+			"length": 20,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":0,
+			"doors": "",
+			"tile":"passage_009.png",
+			"id": 9
+		},{
+			"desc": "Stairs",
+			"width": 10,
+			"length": 20,
+			"height": 10,
+			"shape": "",
+			"passages" : "",
+			"secret_chance":0,
+			"doors": "",
+			"tile":"passage_010.png",
+			"id": 10
+		}
+	]
+}
