@@ -20,7 +20,7 @@
 			"shape": "",
 			"passages" : "",
 			"secret_chance":0,
-			"doors": "R",
+			"doors": "E",
 			"tile":"passage_002.png",
 			"id": 2
 		},
@@ -42,7 +42,7 @@
 			"length": 40,
 			"height": 10,
 			"shape": "",
-			"passages" : "R",
+			"passages" : "E,W",
 			"secret_chance":0,
 			"doors": "",
 			"tile":"passage_004.png",

@@ -26,28 +26,10 @@ if(isset($_GET['function'])){
 		}else{
 			$funcParams[1] = "";
 		}		
-		
-		//$iParam = 0;
-		
-		//parse_str($_SERVER['QUERY_STRING'], $formurl);
-		//foreach ($_GET as $name => $value) {
-		//	if ($name != "function")
-		//		$funcParams[$iParam++] = $value;
-		//}
-		//foreach ($_POST as $name => $value) {
-		//	if ($name != "function")
-		//		$funcParams[$iParam++] = $value;
-		//}
-		//var_dump($funcParams); exit();
 		$result = call_user_func_array($function,  $funcParams);
-		//var_dump($result);
-		//echo json_encode($result);
 	}else{
 		return false;
 	}
-}
-if(!isset($_SESSION['nav'])){
-	$_SESSION['nav'] = array();
 }
 
 // Generate the Goal for the adventure
@@ -207,10 +189,9 @@ function rand_dungeon_door($passage,$passage_direction,$door_direction){
 		}
 }
 
-
 // Generate the random chamber purpose for the adventure
 function rand_dungeon_beyond_door(){
-	$beyond = ["passage","passage","chamber","stairs","door"];
+	$beyond = ["passage","passage","passage","passage","passage","passage","passage","chamber","chamber","chamber","chamber","chamber","stairs"];
 	$rand_key = array_rand($beyond, 1);
 	return $beyond[$rand_key];
 }
@@ -258,11 +239,28 @@ function rand_dungeon_chamber_contents($type,$chamber_id){
 			error_modal('ERROR: Invalid dungeon_chamber_contents.json','Your dungeon_chamber_contents.json file is invalid, please correct and try again.<br>[See <a href="http://jsonlint.com/" target="_blank">http://jsonlint.com/</a>]');
 		}else{
 			$rand_key = array_rand($json['contents'][0][$type],1);
-			$content = $json['contents'][0][$type][$rand_key]['content'];
+			$content = $json['contents'][0][$type][$rand_key];
 			
 			$_SESSION['dungeon'][$chamber_id]['content'] = $content;
 			ksort($_SESSION['dungeon'][$chamber_id]);
 			return $content;
+		}		
+}
+// Generate the dungeon chamber monsters
+function add_monster($type,$chamber_id){
+	$monsters = [];
+	$str = file_get_contents('json/dungeon_monsters.json');
+	$json = json_decode($str, true); // decode the JSON into an associative array
+		if ($json === null
+		&& json_last_error() !== JSON_ERROR_NONE) {
+			error_modal('ERROR: Invalid dungeon_monsters.json','Your dungeon_monsters.json file is invalid, please correct and try again.<br>[See <a href="http://jsonlint.com/" target="_blank">http://jsonlint.com/</a>]');
+		}else{
+			$rand_key = array_rand($json['monsters'][0][$type],1);
+			$monster = $json['monsters'][0][$type][$rand_key];
+			
+			$_SESSION['dungeon'][$chamber_id]['monster'] = $monster;
+			ksort($_SESSION['dungeon'][$chamber_id]);
+			return $monster;
 		}		
 }
 //Handle Errors

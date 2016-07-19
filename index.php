@@ -36,197 +36,68 @@ while($i < $max_iterations){
 		$dungeon 	= rand_dungeon_chamber($chamber_id);
 		rand_dungeon_chamber_purpose($type,$chamber_id);
 		rand_dungeon_chamber_state($type,$chamber_id);
-		rand_dungeon_chamber_contents($type,$chamber_id);
+		$content = rand_dungeon_chamber_contents($type,$chamber_id);
+		if($content['monster']){
+			add_monster($type,$chamber_id);
+		}
 	}
 //var_dump($dungeon);
-
-			// PASSAGE AND DOOR GENERATION
-				//Check for each passage and generate those
-				$passages 	= explode(',',$_SESSION['dungeon'][$chamber_id]['passages']);
-
-				if (in_array("N", $passages))
-				  {
-					$direction = "N";
-					$label = 'N';
-					$passage = rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);
-
-					$path = search($_SESSION['dungeon'], $passage['uid'] );
-					insert_into_array($path,$passage,$label);
+		$passages = [];
+		$passages 	= explode(',',$_SESSION['dungeon'][$chamber_id]['passages']);
+		$path = [];
+		$path = search($_SESSION['dungeon'],$_SESSION['dungeon'][$chamber_id]['uid']);
 					
-					// DOOR CHECK
-					// CHECK: DOES THIS HANDLE MULTIPLE DOORS? SHOULD RETURN ARRAY OF door_uid then should loop through the array
+				//IF the chamber has passages loop through each one and generate
+				if (count(array_filter($passages)) != 0){
+				foreach($passages as $direction)
+				{
+					$passage = rand_dungeon_passage($_SESSION['dungeon'][$chamber_id]['uid'],$direction);
+					//Add passage into array
+					insert_into_array($path,$passage,$direction);
+					
+					$passage_path = [];
+					$passage_path = search($_SESSION['dungeon'],$passage['uid']);
+					
+					//Check passage for doors
 					$door = door_check($passage,$direction);
 					
-					//var_dump($door);
 					if(isset($door['uid'])){
-						$path = '';
+						//Add door into array
+						insert_into_array($passage_path,$door,$door['direction']);
 						
-						$path = search($_SESSION['dungeon'],$door['uid']);
-						insert_into_array($path,$door,$door['direction']);
-						
+						//Check for whats beyond the door
 						$check = rand_dungeon_beyond_door($door['uid']);
-						if($check = 'passage'){						
+						if($check == 'passage'){						
 							//Search for array path to current location for passage
 							//Generate new passage
 							$tmp_passage = rand_dungeon_passage($door['uid'],$check);
 							//Insert passage into array
-							$label = 'passage';
 							array_push($path,$door['direction']);
 							ksort($tmp_passage);
-							insert_into_array($path,$tmp_passage,$label);
+							insert_into_array($path,$tmp_passage,$check);
 						}
 					}
-				
 					// PASSAGE CHECK
-					$tmp_passages = [];
-					$tmp_passages 	= explode(',',$tmp_passage['passages']);
-					if (in_array("N", $tmp_passages)){
-						$direction = "N";
-						$label = 'N';
-						rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}
-					if (in_array("S", $tmp_passages)){
-						$direction = "S";
-						$label = 'S';
-						rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}					
-					if (in_array("E", $tmp_passages)){
-						$direction = "E";
-						$label = 'E';
-						rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}					
-					if (in_array("W", $tmp_passages)){
-						$direction = "W";
-						$label = 'W';
-						rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}	
-				  }
-				if (in_array("S", $passages))
-				  {
-					$direction = "S";
-					$label = 'S';
-					$passage = rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);
-			
-					//$path = search($_SESSION['dungeon'], $passage['uid'] );
-					$_SESSION['dungeon'][$chamber_id ][$direction] = $passage;
-					//insert_into_array($path,$passage,$label);
-					
-					// DOOR CHECK
-					// CHECK: DOES THIS HANDLE MULTIPLE DOORS? SHOULD RETURN ARRAY OF door_uid then should loop through the array
-					$door = door_check($passage,$direction);
-					
-					//var_dump($door);
-					if($door){
-						$path = '';
-						
-						$path = search($_SESSION['dungeon'],$door['uid']);
-						insert_into_array($path,$door,$direction);
-						
-						$check = rand_dungeon_beyond_door($door['uid']);
-						if($check = 'passage'){						
-							//Search for array path to current location for passage
-							//Generate new passage
-							$tmp_passage = rand_dungeon_passage($door['uid'],$check);
-							//Insert passage into array
-							$label = 'passage';
-							array_push($path,$direction);
-							ksort($tmp_passage);
-							insert_into_array($path,$tmp_passage,$label);
-						}
-					}
-					
-					// PASSAGE CHECK
-					$tmp_passages 	= explode(',',$tmp_passage['passages']);
-					if (in_array("N", $tmp_passages)){
-						$direction = "N";
-						$label = 'N';
-						//rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}
-					if (in_array("S", $tmp_passages)){
-						$direction = "S";
-						$label = 'S';
-						//rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}					
-					if (in_array("E", $tmp_passages)){
-						$direction = "E";
-						$label = 'E';
-						//rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}					
-					if (in_array("W", $tmp_passages)){
-						$direction = "W";
-						$label = 'W';
-						//rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);						
-					}					
-					
-				  }
-				if (in_array("E", $passages))
-				  {
-					$direction = "E";
-					$label = 'E';
-					$passage = rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);
-					
-					//$path = search($_SESSION['dungeon'], $passage['uid'] );
-					$_SESSION['dungeon'][$chamber_id ][$direction] = $passage;
-					//insert_into_array($path,$passage,$label);
-	
-					// DOOR CHECK
-					// CHECK: DOES THIS HANDLE MULTIPLE DOORS? SHOULD RETURN ARRAY OF door_uid then should loop through the array	
-					$door = door_check($passage,$direction);
-			
-					
-					if($door){
-						$check = rand_dungeon_beyond_door($door['uid']);
-						if($check = 'passage'){						
-						//Search for array path to current location for passage
-							$path = search($_SESSION['dungeon'], $door['uid']);
-						//Generate new passage
-						$tmp_passage = rand_dungeon_passage($door['uid'],$check);
-						//Insert passage into array
-						$label = 'Passage';
-						ksort($tmp_passage);
-						insert_into_array($path,$tmp_passage,$label);
-					}}
-				  }
-				if (in_array("W", $passages))
-				  {
-					$direction = "W";
-					$label = 'W';
-					$passage = rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);
-					
-					//$path = search($_SESSION['dungeon'], $passage['uid'] );
-					$_SESSION['dungeon'][$chamber_id ][$direction] = $passage;
-					//insert_into_array($path,$passage,$label);
+					//$tmp_passages = [];
+					//$tmp_passages 	= explode(',',$tmp_passage['passages']);
+					//if ($tmp_passages){foreach($tmp_passages as $direction){rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);}}
+				}}
 
-					// DOOR CHECK
-					// CHECK: DOES THIS HANDLE MULTIPLE DOORS? SHOULD RETURN ARRAY OF door_uid then should loop through the array
-					$door = door_check($passage,$direction);
-					if($door){
-						$check = rand_dungeon_beyond_door($door['uid']);
-						if($check = 'passage'){						
-						//Search for array path to current location for passage
-							$path = search($_SESSION['dungeon'], $door['uid']);
-						//Generate new passage
-						$tmp_passage = rand_dungeon_passage($door['uid'],$check);
-						//Insert passage into array
-						$label = 'Passage';
-						ksort($tmp_passage);
-						insert_into_array($path,$tmp_passage,$label);
-					}}
-				  }
-			
 			// DOOR GENERATION
 				//Check for each door and generate those
+				/*
 				$doors = [];
 				$doors	= explode(',',$_SESSION['dungeon'][$chamber_id]['doors']);
-				var_dump($doors);
+		
 				if ($doors)
 				{
 					foreach($doors as $direction){
+					
 						$label = $door;
 						$door = door_check($_SESSION['dungeon'][$chamber_id],$direction);
 						if($door){
 							$check = rand_dungeon_beyond_door($door['uid']);
-							if($check = 'passage'){						
+							if($check == 'passage'){						
 								//Search for array path to current location for passage
 								$path = search($_SESSION['dungeon'], $door['uid']);
 								//Generate new passage
@@ -236,19 +107,20 @@ while($i < $max_iterations){
 								insert_into_array($path,$door,$direction);
 								//insert_into_array($path,$tmp_passage,$label);
 							}
-							if($check = 'chamber'){						
+							if($check == 'chamber'){						
 								$chamber_id = uniqid();
 								$dungeon 	= rand_dungeon_chamber($chamber_id);
 								rand_dungeon_chamber_purpose($type,$chamber_id);
 								rand_dungeon_chamber_state($type,$chamber_id);
 								rand_dungeon_chamber_contents($type,$chamber_id);
 							}					
-							if($check = 'stairs'){						
-
+							if($check == 'stairs'){						
+								echo "stairs<br>";
 							}					
 						}				
 					}
 				}
+				*/
  
 $i++;
 }

@@ -1,0 +1,58 @@
+{
+	"monsters": [{
+		"lair": [
+		{
+			"name": "bat",
+			"rarity":"common",
+			"cr":"1/8",
+			"xp":50,
+			"ac":16,
+			"touch-ac":16,
+			"flat-footed-ac":14,
+			"hp":2,
+			"FORT":0,
+			"REF":4,
+			"WILL":2,
+			"melee":"bite",
+			"melee_dmg":"1d3-5",
+			"Str": 1, 
+			"Dex": 15, 
+			"Con": 6, 
+			"Int": 2,
+			"Wis": 14, 
+			"Cha": 5,
+			"environments":"temperate,forests,deserts",
+			"treasure":0,
+			"info":"Most bats are insectivores or fruit-eaters, but at least one species drinks blood.",
+			"url":"http://www.d20pfsrd.com/bestiary/monster-listings/animals/bat/bat",
+			"id": 1
+		},
+		{
+			"name": "kobold",
+			"rarity":"common",
+			"cr":"1/4",
+			"xp":100,
+			"ac":15,
+			"touch-ac":12,
+			"flat-footed-ac":14,
+			"hp":5,
+			"FORT":2,
+			"REF":1,
+			"WILL":-1,
+			"melee":"spear",
+			"melee_dmg":"1d6-1/x3",
+			"Str": 9, 
+			"Dex": 13, 
+			"Con": 10, 
+			"Int": 10,
+			"Wis": 9, 
+			"Cha": 8,
+			"environments":"temperate,underground,deep forest",
+			"treasure":0,
+			"info":"<p>Kobolds are creatures of the dark, found most commonly in enormous underground warrens or the dark corners of the forest where the sun is unable to reach. </p><p>Due to their physical similarities, kobolds loudly proclaim themselves the scions of dragonkind, destined to rule the earth beneath the wings of their great god-cousins, but most dragons have little use for the obnoxious pests.</p><p>While they may speak loudly of divine right and manifest destiny, kobolds are keenly aware of their own weakness. Cowards and schemers, they never fight fair if they can help it, instead setting up ambushes and double-crosses, holing up in their warrens behind countless crude but ingenious traps, or rolling over the enemy in vast, yipping hordes.</p><p>Kobold coloration varies even among siblings from the same egg clutch, ranging through the colors of the chromatic dragons, with red being the most common but white, green, blue, and black kobolds not unheard of.</p>",
+			"url":"http://www.d20pfsrd.com/bestiary/monster-listings/humanoids/kobold",
+			"id": 2
+		}
+	]
+}]
+}

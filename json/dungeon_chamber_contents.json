@@ -3,42 +3,71 @@
 		"lair": [
 		{
 			"content": "Monster (dominant inhabitant)",
+			"monster": 1,
+			"treasure": 0,
+			"trap": 0,
 			"id": 1
 		},		
 		{
 			"content": "Monster (dominant inhabitant) with treasure",
+			"monster": 1,
+			"treasure": 1,
+			"trap": 0,
 			"id": 2
 		},		
 		{
 			"content": "Monster (pet or allied creature)",
+			"monster": 1,
+			"treasure": 0,
+			"trap": 0,
 			"id": 3
 		},			
 		{
 			"content": "Monster (pet or allied creature) guarding treasure",
+			"monster": 1,
+			"treasure": 1,
+			"trap": 0,
 			"id": 4
 		},
 		{
 			"content": "Monster (random creature)",
+			"monster": 1,
+			"treasure": 0,
+			"trap": 0,
 			"id": 5
 		},
 		{
 			"content": "Monster (random creature) with treasure",
+			"monster": 1,
+			"treasure": 1,
+			"trap": 0,
 			"id": 6
 		},
 		{
 			"content": "Trap (see 'Random Traps')",
+			"monster": 0,
+			"treasure": 0,
+			"trap": 1,
 			"id": 7
 		},
 		{
 			"content": "Trap (see 'Random Traps') protecting treasure",
+			"monster": 0,
+			"treasure": 1,
 			"id": 8
 		},
 		{
 			"content": "Empty Room",
+			"monster": 0,
+			"treasure": 0,
+			"trap": 0,
 			"id": 9
 		},
 		{
 			"content": "Empty Room with treasure",
+			"monster": 0,
+			"treasure": 1,
+			"trap": 0,
 			"id": 10
 		}
 	]
