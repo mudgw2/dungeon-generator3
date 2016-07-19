@@ -9,8 +9,6 @@
 			"locked": 0,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 1
 		},
@@ -23,8 +21,6 @@
 			"locked": 0,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 2
 		},		
@@ -37,8 +33,6 @@
 			"locked": 1,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 3
 		},
@@ -51,8 +45,6 @@
 			"locked": 0,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 4
 		},
@@ -65,8 +57,6 @@
 			"locked": 0,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 5
 		},
@@ -79,8 +69,6 @@
 			"locked": 1,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 6
 		},
@@ -93,8 +81,6 @@
 			"locked": 0,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 7
 		},
@@ -107,8 +93,6 @@
 			"locked": 0,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 8
 		},
@@ -121,8 +105,6 @@
 			"locked": 1,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 9
 		},
@@ -135,8 +117,6 @@
 			"locked": 0,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 10
 		},
@@ -149,8 +129,6 @@
 			"locked": 1,
 			"secret": 0,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 11
 		},
@@ -163,8 +141,6 @@
 			"locked": 0,
 			"secret": 1,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 12
 		},
@@ -177,8 +153,6 @@
 			"locked": 1,
 			"secret": 1,
 			"shape": "",
-			"passages" : "",
-			"doors": "",
 			"tile":"",
 			"id": 13
 		}

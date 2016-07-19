@@ -175,8 +175,6 @@ function rand_dungeon_passage($uid,$direction){
 function door_check($passage,$direction){
 	$door = [];
 	$doors 	= explode(',',$passage['doors']);
-	
-	//var_dump($passage);
 		if (in_array("N", $doors))
 		{	$door = rand_dungeon_door($passage,$direction,'N');	}
 		if (in_array("S", $doors))
@@ -205,8 +203,6 @@ function rand_dungeon_door($passage,$passage_direction,$door_direction){
 			//Generate Unique ID for this instance
 			$door['uid'] = uniqid();
 			$door['direction'] = $door_direction;
-			
-			//$_SESSION['dungeon']['starting_area'][$passage_direction]['passage']['door'][$door_direction] = $door;
 			return $door;
 		}
 }
@@ -214,7 +210,7 @@ function rand_dungeon_door($passage,$passage_direction,$door_direction){
 
 // Generate the random chamber purpose for the adventure
 function rand_dungeon_beyond_door(){
-	$beyond = ["passage","passage","chamber","stairs","dsoor"];
+	$beyond = ["passage","passage","chamber","stairs","door"];
 	$rand_key = array_rand($beyond, 1);
 	return $beyond[$rand_key];
 }

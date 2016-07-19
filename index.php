@@ -116,7 +116,7 @@ while($i < $max_iterations){
 					$door = door_check($passage,$direction);
 					
 					//var_dump($door);
-					if(isset($door['uid'])){
+					if($door){
 						$path = '';
 						
 						$path = search($_SESSION['dungeon'],$door['uid']);
@@ -171,14 +171,16 @@ while($i < $max_iterations){
 	
 					// DOOR CHECK
 					// CHECK: DOES THIS HANDLE MULTIPLE DOORS? SHOULD RETURN ARRAY OF door_uid then should loop through the array	
-					$door_uid = door_check($passage,$direction);
-					if($door_uid){
-						$check = rand_dungeon_beyond_door($door_uid);
-						if($check = 'Passage'){						
+					$door = door_check($passage,$direction);
+			
+					
+					if($door){
+						$check = rand_dungeon_beyond_door($door['uid']);
+						if($check = 'passage'){						
 						//Search for array path to current location for passage
-							$path = search($_SESSION['dungeon'], $door_uid );
+							$path = search($_SESSION['dungeon'], $door['uid']);
 						//Generate new passage
-						$tmp_passage = rand_dungeon_passage($door_uid,$check);
+						$tmp_passage = rand_dungeon_passage($door['uid'],$check);
 						//Insert passage into array
 						$label = 'Passage';
 						ksort($tmp_passage);
@@ -197,14 +199,14 @@ while($i < $max_iterations){
 
 					// DOOR CHECK
 					// CHECK: DOES THIS HANDLE MULTIPLE DOORS? SHOULD RETURN ARRAY OF door_uid then should loop through the array
-					$door_uid = door_check($passage,$direction);
-					if($door_uid){
-						$check = rand_dungeon_beyond_door($door_uid);
-						if($check = 'Passage'){						
+					$door = door_check($passage,$direction);
+					if($door){
+						$check = rand_dungeon_beyond_door($door['uid']);
+						if($check = 'passage'){						
 						//Search for array path to current location for passage
-							$path = search($_SESSION['dungeon'], $door_uid );
+							$path = search($_SESSION['dungeon'], $door['uid']);
 						//Generate new passage
-						$tmp_passage = rand_dungeon_passage($door_uid,$check);
+						$tmp_passage = rand_dungeon_passage($door['uid'],$check);
 						//Insert passage into array
 						$label = 'Passage';
 						ksort($tmp_passage);
@@ -214,34 +216,42 @@ while($i < $max_iterations){
 			
 			// DOOR GENERATION
 				//Check for each door and generate those
+				$doors = [];
 				$doors	= explode(',',$_SESSION['dungeon'][$chamber_id]['doors']);
-				if (in_array("N", $doors))
-				  {
-					$direction = "N";
-					$label = 'N';
-					//$passage = rand_dungeon_passage($_SESSION['dungeon'][$chamber_id ]['uid'],$direction);
-					
-					$door_uid = door_check($passage,$direction);
-					if($door_uid){
-						$check = rand_dungeon_beyond_door($door_uid);
-						echo $check;
-						if($check = 'Passage'){						
-						//Search for array path to current location for passage
-							$path = search($_SESSION['dungeon'], $door_uid );
-						//Generate new passage
-						$tmp_passage = rand_dungeon_passage($door_uid,$check);
-						//Insert passage into array
-						$label = 'Passage';
-						ksort($tmp_passage);
-						insert_into_array($path,$tmp_passage,$label);
-					}}				
-				  }
+				var_dump($doors);
+				if ($doors)
+				{
+					foreach($doors as $direction){
+						$label = $door;
+						$door = door_check($_SESSION['dungeon'][$chamber_id],$direction);
+						if($door){
+							$check = rand_dungeon_beyond_door($door['uid']);
+							if($check = 'passage'){						
+								//Search for array path to current location for passage
+								$path = search($_SESSION['dungeon'], $door['uid']);
+								//Generate new passage
+								$tmp_passage = rand_dungeon_passage($door['uid'],$check);
+								//Insert passage into array
+								ksort($tmp_passage);
+								insert_into_array($path,$door,$direction);
+								//insert_into_array($path,$tmp_passage,$label);
+							}
+							if($check = 'chamber'){						
+								$chamber_id = uniqid();
+								$dungeon 	= rand_dungeon_chamber($chamber_id);
+								rand_dungeon_chamber_purpose($type,$chamber_id);
+								rand_dungeon_chamber_state($type,$chamber_id);
+								rand_dungeon_chamber_contents($type,$chamber_id);
+							}					
+							if($check = 'stairs'){						
 
+							}					
+						}				
+					}
+				}
+ 
 $i++;
 }
-
-
-
 
 echo "<HR/>";
 
