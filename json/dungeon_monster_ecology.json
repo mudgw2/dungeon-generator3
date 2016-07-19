@@ -1,0 +1,28 @@
+{
+	"dungeon": [{
+		"lair": [
+		{
+			"name": "kobold",
+			"males_min":40,
+			"males_max":400,
+			"females_min":20,
+			"females_max":200,
+			"young_min":4,
+			"young_max":40,
+			"mature": 8,
+			"old": 120,
+			"max_age":135,
+			"required_rooms":"temple,kiln,hatchery,common_area",
+			"languages":"draconic,common,orcish,undercommon",
+			"society":"gerontocracy",
+			"leader_title":"All-Watcher",
+			"dieties":"Kurtulmak,Gaknulak",
+			"enemies":"gnome,goblin",
+			"allies":"",
+			"domesticated":"badger,giant weasel",
+			"id": 1
+		}
+		
+	]
+}]
+}

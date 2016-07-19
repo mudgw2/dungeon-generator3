@@ -14,6 +14,13 @@
 	$max_iterations = 10;
 	$i = 0;
 	$type = 'lair';
+	$level = 1;
+	$age = 500;
+	//difficulty
+	// 1 = easy (CR is .5x of party)
+	// 2 = normal (CR matches party)
+	// 3 = hard (CR is 1.5x the party)
+	$difficulty = 1;
 ?>
 <body id="page-top">
 <?php 
@@ -38,8 +45,10 @@ while($i < $max_iterations){
 		rand_dungeon_chamber_state($type,$chamber_id);
 		$content = rand_dungeon_chamber_contents($type,$chamber_id);
 		if($content['monster']){
-			add_monster($type,$chamber_id);
+			$monsters = add_monster($type,$chamber_id,$level,$difficulty);
+			var_dump($monsters);
 		}
+		
 	}
 //var_dump($dungeon);
 		$passages = [];
@@ -124,6 +133,15 @@ while($i < $max_iterations){
  
 $i++;
 }
+
+
+//Modify resident monsters for jobs/roles/leadership 
+
+
+
+
+
+
 
 echo "<HR/>";
 

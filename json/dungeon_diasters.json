@@ -1,0 +1,30 @@
+{
+	"disaster": [{
+		"lair": [
+		{
+			"desc": "lava flow",
+			"id": 1
+		},
+		{
+			"desc": "flooding",
+			"id": 2
+		},
+		{
+			"desc": "earthquake",
+			"id": 3
+		},
+		{
+			"desc": "death - disease",
+			"id": 4
+		},
+		{
+			"desc": "death - famine",
+			"id": 5
+		},
+		{
+			"desc": "death - war",
+			"id": 6
+		}	
+	]
+}]
+}

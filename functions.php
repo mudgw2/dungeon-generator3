@@ -247,7 +247,7 @@ function rand_dungeon_chamber_contents($type,$chamber_id){
 		}		
 }
 // Generate the dungeon chamber monsters
-function add_monster($type,$chamber_id){
+function add_monster($type,$chamber_id,$level,$difficulty){
 	$monsters = [];
 	$str = file_get_contents('json/dungeon_monsters.json');
 	$json = json_decode($str, true); // decode the JSON into an associative array
@@ -255,12 +255,21 @@ function add_monster($type,$chamber_id){
 		&& json_last_error() !== JSON_ERROR_NONE) {
 			error_modal('ERROR: Invalid dungeon_monsters.json','Your dungeon_monsters.json file is invalid, please correct and try again.<br>[See <a href="http://jsonlint.com/" target="_blank">http://jsonlint.com/</a>]');
 		}else{
-			$rand_key = array_rand($json['monsters'][0][$type],1);
-			$monster = $json['monsters'][0][$type][$rand_key];
-			
-			$_SESSION['dungeon'][$chamber_id]['monster'] = $monster;
+			//Generate enough monsters to fit the CR of the encounter/dungeon
+			$monsters = [];
+			//Get dungeon level and multiply it by the avg number of players (4) divided by half
+			$monster_cr = 0;
+			$encounter_cr = $level*$difficulty;
+			//Get monster CR
+			while($encounter_cr > $monster_cr){
+				$rand_key = array_rand($json['monsters'][0][$type],1);
+				$monster = $json['monsters'][0][$type][$rand_key];
+				array_push($monsters,$monster);
+				$monster_cr += $monster['cr'];
+			}
+			$_SESSION['dungeon'][$chamber_id]['monster'] = $monsters;
 			ksort($_SESSION['dungeon'][$chamber_id]);
-			return $monster;
+			return $monsters;
 		}		
 }
 //Handle Errors
