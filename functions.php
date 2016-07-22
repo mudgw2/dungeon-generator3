@@ -1,3 +1,4 @@
+
 <?php
 //Allow for functions to be requested by ajax (for example), this will then check to see if this page has the needed function then execute it.
 //var_dump($_POST);

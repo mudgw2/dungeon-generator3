@@ -96,7 +96,7 @@
 			"tile":"passage_008.png",
 			"id": 8
 		},{
-			"desc": "Chamber",
+			"desc": "Continue straight 20ft., comes to a dead end.",
 			"width": 10,
 			"length": 20,
 			"height": 10,
