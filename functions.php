@@ -90,7 +90,7 @@ function rand_dungeon_starting_area($chamber_id){
 			$_SESSION['dungeon'][$chamber_id]['uid'] = uniqid();
 		}
 }
-function rand_dungeon_chamber($chamber_id){
+function rand_dungeon_chamber($chamber_id,$from_uid){
 	// Generate the random starting area for the adventure
 	$str = file_get_contents('json/dungeon_chambers.json');
 	$json = json_decode($str, true); // decode the JSON into an associative array
@@ -106,6 +106,7 @@ function rand_dungeon_chamber($chamber_id){
 			$_SESSION['dungeon'][$chamber_id] = $json['chambers'][0]['lair'][$rand_key];
 			//Generate Unique ID for this instance
 			$dungeon['uid'] = uniqid();
+			if($from_uid){$_SESSION['dungeon'][$chamber_id]['from_uid'] = $from_uid;}
 			$_SESSION['dungeon'][$chamber_id]['uid'] = uniqid();
 			ksort($_SESSION['dungeon'][$chamber_id]);
 			$chamber = $_SESSION['dungeon'][$chamber_id];
@@ -292,9 +293,9 @@ function error_modal($title,$message){
 function search($arr, $key)
 {
 	$ritit = new RecursiveIteratorIterator(new RecursiveArrayIterator($arr));
-	$results = array();
+	$results = [];
 	foreach ($ritit as $leafValue) {
-	$path = array();
+	$path = [];
 	foreach (range(0, $ritit->getDepth()) as $depth) {
 		$path[] = $ritit->getSubIterator($depth)->key();
 	}
@@ -303,6 +304,9 @@ function search($arr, $key)
 	array_pop($path);
 	return $path;
 }
+
+
+
 
 
 function insert_into_array($path,$a2,$label)
