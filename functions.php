@@ -1,13 +1,21 @@
-
 <?php
 //Allow for functions to be requested by ajax (for example), this will then check to see if this page has the needed function then execute it.
-//var_dump($_POST);
-//SEED RANDOM Number
+if (session_status() == PHP_SESSION_NONE) {
+	$_SESSION['dungeon']['uid'] = uniqid();	
+	session_unset();
+	//session_destroy();
+	session_write_close();
+	setcookie(session_name(),'',0,'/');
+	session_regenerate_id(true);
+}
+session_start();
+//INIT
+$directions = array("N" => "North", "S" => "South", "E" => "East", "W" => "West"); 
 
+//Generate SEED
 if(isset($_GET['seed'])){$GLOBALS['seed'] = $_GET['seed'];}else{$GLOBALS['seed'] = 42;}
 srand($GLOBALS['seed']);
 
-$_SESSION['dungeon']['uid'] = uniqid();
 
 if(isset($_GET['function'])){
 	$funcParams = [];
@@ -48,7 +56,7 @@ function goal($g,$type){
 			
 			$_SESSION['dungeon']['goal'] = $json['goals'][0][$type][$rand_key]['goal'];
 		
-			echo $_SESSION['dungeon']['goal'];
+			//echo $_SESSION['dungeon']['goal'];
 			}else{
 				error_modal('ERROR: Invalid dungeon type selected','Your dungeon type selection is invalid, please correct and try again.');
 			}
@@ -67,7 +75,7 @@ function introduction(){
 			//srand($GLOBALS['seed']);
 			$rand_key = array_rand($json['introductions']);
 			$_SESSION['dungeon']['intro'] = $json['introductions'][$rand_key]['intro'];
-			echo $_SESSION['dungeon']['intro'];
+			//echo $_SESSION['dungeon']['intro'];
 		}
 }
 
@@ -191,6 +199,43 @@ function rand_dungeon_door($passage,$passage_direction,$door_direction){
 		}
 }
 
+
+function dungeon_door($chamber_id,$direction,$BuildQueue){			
+	$doors = [];
+	$doors	= explode(',',$_SESSION['dungeon'][$chamber_id]['doors']);
+
+	if ($doors){
+	foreach($doors as $direction){
+		$door = door_check($_SESSION['dungeon'][$chamber_id],$direction);
+		if($door){
+			$check = rand_dungeon_beyond_door($door['uid']);
+			if($check == 'passage'){						
+				//echo "ADD PASSAGE TO QUEUE<br>";
+				$BuildQueue2 = [];
+				$BuildQueue2['type'] = $check;
+				$BuildQueue2['uid'] = $door['uid'];
+				array_push($BuildQueue,$BuildQueue2);
+				}
+			if($check == 'chamber'){						
+				//echo "ADD CHAMBER TO QUEUE<br>";
+				$BuildQueue2 = [];
+				$BuildQueue2['type'] = $check;
+				$BuildQueue2['uid'] = $door['uid'];
+				array_push($BuildQueue,$BuildQueue2);
+			}					
+			if($check == 'stairs'){						
+				//Set from_uid for next chamber connected to this door
+				//echo "ADD STAIRS TO QUEUE<br>";
+				$BuildQueue2 = [];
+				$BuildQueue2['type'] = $check;
+				$BuildQueue2['uid'] = $door['uid'];
+				array_push($BuildQueue,$BuildQueue2);
+			}				
+		}}}
+		return $BuildQueue;
+}
+
+
 // Generate the random chamber purpose for the adventure
 function rand_dungeon_beyond_door(){
 	$beyond = ["passage","passage","passage","passage","passage","passage","passage","chamber","chamber","chamber","chamber","chamber","stairs"];
@@ -304,10 +349,6 @@ function search($arr, $key)
 	array_pop($path);
 	return $path;
 }
-
-
-
-
 
 function insert_into_array($path,$a2,$label)
 {

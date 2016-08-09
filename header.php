@@ -9,8 +9,6 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.autocomplete.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Tillana|Varela" rel="stylesheet">
 

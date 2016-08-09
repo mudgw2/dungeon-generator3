@@ -1,0 +1,36 @@
+
+* {
+  box-sizing: border-box;
+}
+body,html{
+	/*background-color:rgba(0,0,0,0.05);*/
+	color:#000;
+	font-family: Varela, sans-serif;
+	height: 100%;
+	font-size:11pt;
+	line-height:18pt;
+	min-height: 100%;
+	background-color:#FFF;
+}
+h1,h2,h3,h4,.navbar-brand{
+	font-family: 'Tillana', cursive;
+}
+
+section{
+	border-radius:5px;
+	padding:5px;
+	background-color:#e7e7e7;
+}
+.navbar{
+	min-height:65px;
+	-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.7);
+	-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.7);
+	box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.7);
+}
+
+
+.description{
+font-size:11pt;
+	
+}
+	
